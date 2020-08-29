@@ -28,17 +28,33 @@ function getSalePrice(originalPrice, reduction) {
 
 function getMiddleCharacter(str) {
   if (str === undefined) throw new Error("str is required");
-  // Add your code here!
+
+  if (str.length % 2 == 0) {
+    var firstchar = str.length / 2
+    var res = str.substr(firstchar - 1, 2)
+  } else {
+    var firstchar = Math.abs(str.length / 2)
+    var res = str.substr(firstchar, 1)
+  }
+
+  return res
+
 }
 
 function reverseWord(word) {
   if (word === undefined) throw new Error("word is required");
-  // Add your code here!
+  return word.split("").reverse().join("")
 }
 
 function reverseAllWords(words) {
   if (words === undefined) throw new Error("words is required");
-  // Add your code here!
+  var res = []
+ 
+  for(i in words) {
+    res.push(reverseWord(words[i]))
+  }
+
+  return res
 }
 
 function countLinuxUsers(users) {
