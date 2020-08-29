@@ -64,18 +64,45 @@ function getCities(users) {
 
 function getSquareRoots(nums) {
   if (!nums) throw new Error("nums is required");
-  // Your code here
+  
+  var r = []
+
+  for (var i in nums) {
+    r.push(Math.round(Math.sqrt(nums[i]) * 100) / 100)
+  }
+
+  return r
+
 }
 
 function findSentencesContaining(sentences, str) {
   if (!sentences) throw new Error("sentences is required");
   if (!str) throw new Error("str is required");
-  // Your code here
+  
+  var r = []
+
+  for (var i in sentences) {
+    if(sentences[i].toLowerCase().includes(str.toLowerCase())) { r.push(sentences[i]) }
+  }
+
+  return r
+
 }
 
 function getLongestSides(triangles) {
   if (!triangles) throw new Error("triangles is required");
-  // Your code here
+  
+  var r = []
+
+  for (var i in triangles) {
+    var sorted = triangles[i].sort(function(a, b) {
+      return a - b;
+    });
+    var longest = sorted[sorted.length - 1]
+    r.push(longest)
+  }
+
+  return r
 }
 
 module.exports = {
