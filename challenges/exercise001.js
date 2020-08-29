@@ -29,12 +29,15 @@ function getSalePrice(originalPrice, reduction) {
 function getMiddleCharacter(str) {
   if (str === undefined) throw new Error("str is required");
 
+  var firstchar
+  var res
+
   if (str.length % 2 == 0) {
-    var firstchar = str.length / 2
-    var res = str.substr(firstchar - 1, 2)
+    firstchar = str.length / 2
+    res = str.substr(firstchar - 1, 2)
   } else {
-    var firstchar = Math.abs(str.length / 2)
-    var res = str.substr(firstchar, 1)
+    firstchar = Math.abs(str.length / 2)
+    res = str.substr(firstchar, 1)
   }
 
   return res
