@@ -77,12 +77,10 @@ function getSquareRoots(nums) {
 function findSentencesContaining(sentences, str) {
   if (!sentences) throw new Error("sentences is required");
   if (!str) throw new Error("str is required");
-  
-  var r = []
 
-  for (var i in sentences) {
-    if(sentences[i].toLowerCase().includes(str.toLowerCase())) { r.push(sentences[i]) }
-  }
+  var r = sentences.filter(function(sentence) {
+    return sentence.toLowerCase().includes(str.toLowerCase())
+  })
 
   return r
 
