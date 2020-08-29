@@ -2,9 +2,9 @@ function findSmallNums(nums) {
   if (!nums) throw new Error("nums is required");
   var r = []
 
-  for(var i in nums) {
-    if(nums[i] < 1) { r.push(nums[i]) }
-  }
+  nums.forEach(function (num) {
+    if(num < 1) { r.push(num) }
+  })
 
   return r
 } 
