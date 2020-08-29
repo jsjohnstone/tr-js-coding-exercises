@@ -37,7 +37,13 @@ const findNeedle = (haystack, searchTerm) => {
   if (haystack === undefined) throw new Error("haystack is required");
   if (searchTerm === undefined) throw new Error("searchTerm is required");
   
-  var r = haystack.find(property => property.includes(searchTerm))
+  var r = false
+
+  Object.values(haystack).forEach(item => { 
+    if (item.toString().toLowerCase().includes(searchTerm.toLowerCase())) { 
+      r = true 
+    }
+  });
 
   return r
 };
