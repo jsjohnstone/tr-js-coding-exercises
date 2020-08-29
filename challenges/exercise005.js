@@ -13,7 +13,12 @@ const findNextNumber = (nums, n) => {
 
 const count1sand0s = str => {
   if (str === undefined) throw new Error("str is required");
-  var count = { 0: 0, 1: 0 }
+  var r = { 0: 0, 1: 0 }
+
+  var numbers = str.split("")
+  numbers.forEach(number => (number == 1) ? r[1]++ : r[0]++)
+  
+  return r
 };
 
 const reverseNumber = n => parseInt(n.toString().split("").reverse().join(""));
@@ -50,7 +55,14 @@ const findNeedle = (haystack, searchTerm) => {
 
 const getWordFrequencies = str => {
   if (str === undefined) throw new Error("str is required");
-  // Your code here!
+  
+  var r = {}
+
+  var words = str.toLowerCase().replace(/[^\w\s]/gi, '').split(" ")
+  words.forEach(word => (r[word] === undefined) ? r[word] = 1 : r[word]++)
+
+  return r
+
 };
 
 module.exports = {
