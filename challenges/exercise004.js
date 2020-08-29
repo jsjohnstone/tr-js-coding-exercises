@@ -12,7 +12,15 @@ function findSmallNums(nums) {
 function findNamesBeginningWith(names, char) {
   if (!names) throw new Error("names is required");
   if (!char) throw new Error("char is required");
-  // Your code here
+
+  var r = []
+
+  for(var i in names) {
+    if(names[i].substr(0,1) == char) { r.push(names[i]) }
+  }
+
+  return r
+
 }
 
 function findVerbs(words) {
