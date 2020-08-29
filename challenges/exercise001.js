@@ -53,7 +53,7 @@ function reverseAllWords(words) {
   if (words === undefined) throw new Error("words is required");
   var res = []
  
-  for(i in words) {
+  for(var i in words) {
     res.push(reverseWord(words[i]))
   }
 
