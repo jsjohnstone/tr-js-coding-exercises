@@ -88,16 +88,13 @@ function findSentencesContaining(sentences, str) {
 
 function getLongestSides(triangles) {
   if (!triangles) throw new Error("triangles is required");
-  
-  var r = []
 
-  for (var i in triangles) {
-    var sorted = triangles[i].sort(function(a, b) {
+  var r = triangles.map(function(triangle) {
+    var sorted_triangle = triangle.sort(function(a,b) {
       return a - b;
-    });
-    var longest = sorted[sorted.length - 1]
-    r.push(longest)
-  }
+    })
+    return sorted_triangle[sorted_triangle.length - 1]
+  })
 
   return r
 }
