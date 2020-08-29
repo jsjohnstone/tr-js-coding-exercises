@@ -41,9 +41,9 @@ function getIntegers(nums) {
   
   var r = []
 
-  for(var i in nums) {
-    if(Number.isInteger(nums[i])) { r.push(nums[i]) }
-  }
+  nums.forEach(function(num) {
+    if(Number.isInteger(num)) { r.push(num) }
+  })
 
   return r
 
