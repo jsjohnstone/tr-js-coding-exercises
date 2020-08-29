@@ -15,9 +15,9 @@ function findNamesBeginningWith(names, char) {
 
   var r = []
 
-  for(var i in names) {
-    if(names[i].substr(0,1) == char) { r.push(names[i]) }
-  }
+  names.forEach(function (name) {
+    if(name.substr(0,1) == char) { r.push(name) }
+  })
 
   return r
 
