@@ -28,9 +28,9 @@ function findVerbs(words) {
 
   var r = []
 
-  for(var i in words) {
-    if(words[i].substr(0,3) == "to ") { r.push(words[i]) }
-  }
+  words.forEach( function(word) {
+    if(word.substr(0,3) == "to ") { r.push(word) }
+  })
 
   return r
 
