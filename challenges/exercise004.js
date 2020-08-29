@@ -64,12 +64,11 @@ function getCities(users) {
 
 function getSquareRoots(nums) {
   if (!nums) throw new Error("nums is required");
-  
-  var r = []
 
-  for (var i in nums) {
-    r.push(Math.round(Math.sqrt(nums[i]) * 100) / 100)
-  }
+  var r = nums.map(function(num) {
+    var sqrt = Math.round(Math.sqrt(num) * 100) / 100
+    return sqrt
+  })
 
   return r
 
