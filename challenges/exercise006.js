@@ -10,7 +10,7 @@ const sumMultiples = arr => {
 
   var sum = 0
   arr.forEach(num => {
-    if(num % 3 == 0 || num % 5 == 0) { sum += num };
+    if(num % 3 == 0 || num % 5 == 0) { sum += num }
   })
 
   return sum
@@ -89,7 +89,7 @@ const createMatrix = (n, fill) => {
     inner.push(fill)
   }
 
-  for (var i = 0; i < n; i++) {
+  for (var x = 0; x < n; x++) {
     outer.push(inner)
   }
 
