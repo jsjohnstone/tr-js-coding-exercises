@@ -6,6 +6,14 @@
  */
 const sumMultiples = arr => {
   if (arr === undefined) throw new Error("arr is required");
+  if (!Array.isArray(arr)) throw new Error("arr must be an Array");
+
+  var sum = 0
+  arr.forEach(num => {
+    if(num % 3 == 0 || num % 5 == 0) { sum += num };
+  })
+
+  return sum
 };
 
 /**
@@ -15,6 +23,9 @@ const sumMultiples = arr => {
  */
 const isValidDNA = str => {
   if (str === undefined) throw new Error("str is required");
+  if (typeof(str) !== "string") throw new Error("str must be a String");
+
+  return /(^[CGTA]*$)/.test(str)
 };
 
 /**
@@ -24,6 +35,15 @@ const isValidDNA = str => {
  */
 const getComplementaryDNA = str => {
   if (str === undefined) throw new Error("str is required");
+  if (typeof(str) !== "string") throw new Error("str must be a String");
+  if (!isValidDNA(str)) throw new Error("str must be valid DNA (only C,G,T,A)");
+
+  return str.split("").map(char => {
+    if (char == "C") { return "G" }
+    if (char == "G") { return "C" }
+    if (char == "T") { return "A" }
+    if (char == "A") { return "T" }
+  }).join("")
 };
 
 /**
@@ -33,6 +53,17 @@ const getComplementaryDNA = str => {
  */
 const isItPrime = n => {
   if (n === undefined) throw new Error("n is required");
+  if (typeof(n) !== "number") throw new Error("n must be a Number");
+
+  var r = true
+  if(n < 3) { r = false }
+
+  for (var i = 2; i < n; i++) {
+    if(n % i == 0) { r = false }
+  }
+
+  return r
+
 };
 
 /**
@@ -49,6 +80,20 @@ const isItPrime = n => {
 const createMatrix = (n, fill) => {
   if (n === undefined) throw new Error("n is required");
   if (fill === undefined) throw new Error("fill is required");
+  if (typeof(n) !== "number") throw new Error("n must be a Number");
+  if (n < 0) throw new Error("n must be a Positive Number");
+
+  var inner = []
+  var outer = []
+  for (var i = 0; i < n; i++) {
+    inner.push(fill)
+  }
+
+  for (var i = 0; i < n; i++) {
+    outer.push(inner)
+  }
+
+  return outer
 };
 
 /**
@@ -66,6 +111,21 @@ const createMatrix = (n, fill) => {
 const areWeCovered = (staff, day) => {
   if (staff === undefined) throw new Error("staff is required");
   if (day === undefined) throw new Error("day is required");
+  if (typeof(day) !== "string") throw new Error("day must be a String");
+  if (!Array.isArray(staff)) throw new Error("staff must be an Array");
+  
+  var count = 0
+
+  for (var i in staff) {
+
+    if (typeof(staff[i]) !== "object") throw new Error("staff array contains invalid elements")
+
+    if (!Array.isArray(staff[i]['rota'])) throw new Error("staff require a rota array")
+
+    if(staff[i]['rota'].includes(day)) { count++ }
+  }
+
+  return count >= 3
 };
 
 module.exports = {
