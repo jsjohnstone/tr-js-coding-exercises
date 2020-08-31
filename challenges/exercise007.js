@@ -140,7 +140,7 @@ const findWinner = board => {
   for (var col in board[0]) { if(board[0][col] == board[1][col] && board[0][col] == board[2][col]) { winner = board[0][col] }}
 
   if(board[0][0] == board[1][1] && board[0][0] == board[2][2]) { winner = board[0][0] }
-  if(board[2][0] == board[1][1] && board[0][0] == board[0][2]) { winner = board[2][0] }
+  if(board[2][0] == board[1][1] && board[2][0] == board[0][2]) { winner = board[2][0] }
 
   return winner
 };

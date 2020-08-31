@@ -187,7 +187,7 @@ describe("findWinner", () => {
             ["X", "X", "0"],
             ["X", null, "0"]
         ]
-        expect(findWinner(g3)).toBe("0")
+        expect(findWinner(g4)).toBe("X")
     })
     test("check if no winner is correctly returned", () => {
         const gn1 = [
