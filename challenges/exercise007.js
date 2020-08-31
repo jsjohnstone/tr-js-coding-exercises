@@ -4,6 +4,12 @@
  */
 const sumDigits = n => {
   if (n === undefined) throw new Error("n is required");
+  if (typeof(n) !== "number") throw new Error("n must be a Number");
+
+  var r = 0
+  n.toString().split("").forEach(i => r += parseInt(i))
+  return r
+  
 };
 
 /**
@@ -14,9 +20,22 @@ const sumDigits = n => {
  * @param {Number} end
  * @param {Number} step
  */
-const createRange = (start, end, step) => {
+const createRange = (start, end, step = 1) => {
   if (start === undefined) throw new Error("start is required");
   if (end === undefined) throw new Error("end is required");
+  if (typeof(start) !== "number") throw new Error("start must be a Number");
+  if (typeof(end) !== "number") throw new Error("end must be a Number");
+  if (typeof(step) !== "number") throw new Error("step must be a Number");
+  if (!(step > 0)) throw new Error("step must be greater than 0");
+  if (end < start) throw new Error("end must greater than start");
+
+  var r = []
+  while(start <= end) {
+    r.push(start)
+    start += step
+  }
+
+  return r
 };
 
 /**
@@ -51,6 +70,31 @@ const createRange = (start, end, step) => {
 const getScreentimeAlertList = (users, date) => {
   if (users === undefined) throw new Error("users is required");
   if (date === undefined) throw new Error("date is required");
+  if (!Array.isArray(users)) throw new Error("users is required to be an Array");
+  if (typeof(date) !== "string") throw new Error("date is required to be a String");
+
+  var r = []
+
+  for(var x in users) {
+    var dateCount = 0
+
+    users[x]["screenTime"].filter(obj => {
+      return obj.date == date
+    }).forEach(dateobj => {
+
+      for(var usgobj in dateobj["usage"]) {
+        dateCount += dateobj["usage"][usgobj]
+      }
+
+    })
+
+    if(dateCount >= 100) { 
+      r.push(users[x]['username']) 
+    }
+    
+  }
+  return r
+
 };
 
 /**
@@ -65,6 +109,14 @@ const getScreentimeAlertList = (users, date) => {
  */
 const hexToRGB = hexStr => {
   if (hexStr === undefined) throw new Error("hexStr is required");
+  if (typeof(hexStr) !== "string") throw new Error("hexStr is required to be a String");
+  if (hexStr.length !== 6) throw new Error("hexStr must be 6 characters");
+  if (!(/(^[A-F,0-9]*$)/.test(hexStr))) throw new Error("hhexStr must be hexadecimal characters");
+
+  hexStr = hexStr.match(/.{1,2}/g);
+
+  return "rgb(" + parseInt(hexStr[0], 16) + "," + parseInt(hexStr[1], 16) + "," + parseInt(hexStr[2], 16) + ")"
+  
 };
 
 /**
@@ -79,6 +131,18 @@ const hexToRGB = hexStr => {
  */
 const findWinner = board => {
   if (board === undefined) throw new Error("board is required");
+  if (!Array.isArray(board)) throw new Error("board must be an Array");
+  if (board.length !== 3 || board[0].length !== 3 || board[1].length !== 3 || board[2].length !== 3 ) throw new Error("board must contain a 3x3 array");
+
+  var winner = null
+
+  for (var row in board) { if(board[row][0] == board[row][1] && board[row][0] == board[row][2]) { winner = board[row][0] }}
+  for (var col in board[0]) { if(board[0][col] == board[1][col] && board[0][col] == board[2][col]) { winner = board[0][col] }}
+
+  if(board[0][0] == board[1][1] && board[0][0] == board[2][2]) { winner = board[0][0] }
+  if(board[2][0] == board[1][1] && board[0][0] == board[0][2]) { winner = board[2][0] }
+
+  return winner
 };
 
 module.exports = {
