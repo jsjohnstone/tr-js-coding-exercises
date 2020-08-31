@@ -127,3 +127,4 @@ You should fix any errors before adding and commiting your code.
 # The challenges
 
 Open [the first challenge instructions](docs/exercise001.md) to get started!
+
