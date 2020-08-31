@@ -90,10 +90,10 @@ function getMeanScore(scores) {
 function simpleFizzBuzz(n) {
   if (n === undefined) throw new Error("n is required");
   
-  if(n % 3 == 0 && n % 5 != 0) { return "fizz" }
-  if(n % 3 != 0 && n % 5 == 0) { return "buzz" }
   if(n % 3 == 0 && n % 5 == 0) { return "fizzbuzz" }
-  if(n % 3 != 0 && n % 5 != 0) { return n }
+  else if(n % 3 == 0) { return "fizz" }
+  else if(n % 5 == 0) { return "buzz" }
+  else { return n }
 
 }
 
