@@ -136,8 +136,8 @@ const findWinner = board => {
 
   var winner = null
 
-  for (var row in board) { if(board[row][0] == board[row][1] && board[row][0] == board[row][2]) { winner = board[row][0] }}
-  for (var col in board[0]) { if(board[0][col] == board[1][col] && board[0][col] == board[2][col]) { winner = board[0][col] }}
+  for (var row = 0; row <= 2; row++) { if(board[row][0] == board[row][1] && board[row][0] == board[row][2]) { winner = board[row][0] }}
+  for (var col = 0; col <= 2; col++) { if(board[0][col] == board[1][col] && board[0][col] == board[2][col]) { winner = board[0][col] }}
 
   if(board[0][0] == board[1][1] && board[0][0] == board[2][2]) { winner = board[0][0] }
   if(board[2][0] == board[1][1] && board[2][0] == board[0][2]) { winner = board[2][0] }
